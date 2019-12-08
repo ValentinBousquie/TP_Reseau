@@ -3,11 +3,13 @@
 - Répondre aux questions
     Répartition des tâches:
       
-      Thomas :
-      Samir :
-      Alexandre :
-      Valentin :
+      Thomas : Questions 5, Questions 4
+      Samir : Questions 2
+      Alexandre : Questions 1, Questions 7
+      Valentin : Questions 3, Questions 6
 
 - Faire un schéma de chaque réseau (Packet Tracer, Word ...)
 
 - Faire un schéma d'interconnexion des réseaux d'entreprise grâce au routeur central
+
+- Finir les autres parties du TP
