@@ -1,0 +1,6 @@
+DHCP :
+https://wiki.debian.org/fr/DHCP_Server 
+
+NAT :
+https://www.it-connect.fr/configurer-un-routeur-sous-linux%EF%BB%BF/
+https://www.culture-informatique.net/cest-quoi-le-nat-cest-quoi-le-pat/ 
