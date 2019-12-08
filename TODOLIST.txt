@@ -1,0 +1,13 @@
+- Mettre le routeur centrale sur une machine à l'enseeiht pour interconnecter les 4 réseaux d'entreprise
+
+- Répondre aux questions
+    Répartition des tâches:
+      
+      Thomas :
+      Samir :
+      Alexandre :
+      Valentin :
+
+- Faire un schéma de chaque réseau (Packet Tracer, Word ...)
+
+- Faire un schéma d'interconnexion des réseaux d'entreprise grâce au routeur central
