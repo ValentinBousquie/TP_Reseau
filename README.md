@@ -88,6 +88,9 @@ Répertoire documentation TP d'installation d'un réseau d'entreprise
   
   à installer sur le routeur 
   
+  https://doc.ubuntu-fr.org/proxy_terminal
+  
+  
   
   ### Etape 6.2-Proxy cache transparent
   
