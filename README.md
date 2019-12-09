@@ -77,6 +77,18 @@ Répertoire documentation TP d'installation d'un réseau d'entreprise
   
   ### Etape 6.1-Proxy cache web
   
+  Un proxy ou également appelé serveur mandataire permet de suivre les échanges réseaux entre un client et un serveur, cela va permettre de garantir l'anonymat ou de crypter les données.
+  
+  Pour cela nous allons configurer un proxy http (on peut également configurer un proxy en ftp)
+  
+  --> Installation d'un proxy
+  
+  privoxy
+  https://doc.ubuntu-fr.org/privoxy
+  
+  à installer sur le routeur 
+  
+  
   ### Etape 6.2-Proxy cache transparent
   
   ### Questions
