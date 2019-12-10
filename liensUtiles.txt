@@ -7,3 +7,4 @@ https://www.culture-informatique.net/cest-quoi-le-nat-cest-quoi-le-pat/
 
 Proxy :
 https://openclassrooms.com/fr/courses/1733551-gerez-votre-serveur-linux-et-ses-services/5236086-configurez-un-proxy-cache-avec-squid
+http://debian-facile.org/doc:reseau:squid-installer-un-proxy-transparent
