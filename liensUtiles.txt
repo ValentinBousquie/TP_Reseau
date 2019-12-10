@@ -3,4 +3,7 @@ https://wiki.debian.org/fr/DHCP_Server
 
 NAT :
 https://www.it-connect.fr/configurer-un-routeur-sous-linux%EF%BB%BF/
-https://www.culture-informatique.net/cest-quoi-le-nat-cest-quoi-le-pat/ 
+https://www.culture-informatique.net/cest-quoi-le-nat-cest-quoi-le-pat/
+
+Proxy :
+https://openclassrooms.com/fr/courses/1733551-gerez-votre-serveur-linux-et-ses-services/5236086-configurez-un-proxy-cache-avec-squid
