@@ -13,3 +13,5 @@
 - Faire un schéma d'interconnexion des réseaux d'entreprise grâce au routeur central
 
 - Finir les autres parties du TP
+
+- Saisir des routes persistantes
