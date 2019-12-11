@@ -25,6 +25,8 @@ Répertoire documentation TP d'installation d'un réseau d'entreprise
   
   #### Question 1.1
   
+  Il est intéressant de mettre en place du NAT pour la communication entre la DMZ et le réseau privé car ainsi, les adresses internes du réseau privé sont dissimulées depuis la DMZ ce qui représente un bénéfice en terme de sécurité.
+  
   #### Question 1.2
   
   #### Question 1.3
