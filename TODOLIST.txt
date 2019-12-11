@@ -15,3 +15,5 @@
 - Finir les autres parties du TP
 
 - Saisir des routes persistantes
+
+- Scripts exécutés au démarrage: parefeu, ajout des routes ...
