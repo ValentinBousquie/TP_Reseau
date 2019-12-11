@@ -36,8 +36,12 @@ Répertoire documentation TP d'installation d'un réseau d'entreprise
   ### Questions
   
   #### Question 2.1
+  On doit d’abord ajouter sur les routeurs de chaque entreprise des interfaces qui permettront de les relier au routeur vers l’extérieur (routeur central).
+Ensuite sur le routeur central, on rajoutera des routes qui relieront tous les routeurs d’entreprises entre eux (via le routeur central).
+Ainsi, chaque entité du réseau public d’une entreprise aura accès aux serveurs webs des autres entreprises.
   
   #### Question 2.2
+  Ce sont les réseaux privés de chaque entreprise qui ne communiquent pas avec le reste du monde car ayant des adresses privées, ils ne peuvent pas accéder à l’extérieur.
   
   ## Partie III: Communication du réseau privé avec les serveurs web
   
