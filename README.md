@@ -65,6 +65,28 @@ Répertoire documentation TP d'installation d'un réseau d'entreprise
   
   ### Etape 5.1-DHCP sur réseau privé
   
+  Pour notre serveur DHCP nous avons décidé d'utiliser l'outils isc-dhcp-server fournit sur la distribution de Debian 8.
+  
+  Pour cela nous devons installer le paquet après avoir mis à jour l'ensemble des dépots APT
+  
+   `#apt-get update`
+   
+   `apt-get install isc-dhcp-server`
+   
+   Par la suite nous devons configurer notre serveur DHCP pour qu'il puisse attribuer dynamiquement les adresses ip à l'ensemble des machines de notre réseau privé
+   
+   A l'aide de l'éditeur de texte **nano** il faut apporter des modifications au fichier de configuration de notre dhcp présent dans **/etc/dhcp/dhcpd.conf**
+
+puis modifier la section suivante:
+
+> subnet 192.168.1.0 netmask 255.255.255.0 { -- réseau sur lequel s'applique le DHCP
+
+>   range 192.168.1.4 192.168.1.21; -- définition d'une plage d'adresse à attribuer aux clients
+
+>   option routers 192.168.1.1      -- spécifie la passerelle par défaut pour les clients
+
+> }
+  
   ### Questions
   
   #### Question 5.1
