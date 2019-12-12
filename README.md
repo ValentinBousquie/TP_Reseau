@@ -17,6 +17,22 @@ Répertoire documentation TP d'installation d'un réseau d'entreprise
   
   ### Etape 1.1-Réseau privé de l'entreprise
   
+  Pour le réseau privé de l'entreprise nous choisissons une adresse privée avec un masque de sous réseau 255.255.255.0 afin de permettre 2^7-2 soit 126 machines de se connecter ce qui est amplement suffisant dans notre architecture
+  
+  Pour commencer il faut définir un réseau sur l'interface de notre routeur relié à notre réseau local
+  
+  > éditer le fichier `/etc/network/interfaces`
+  
+  > configurer une interface avec une adresse statique
+  
+  >`iface eth1 inet static`
+  
+  >   `address 192.168.1.1` --adresse physique de l'interface eth1 qui sera la passerelle du réseau privé
+  
+  >   `netmask 255.255.255.0` --masque de sous réseau de l'interface eth1
+  
+  >   `network 192.168.1.0` --Réseau de eth1
+  
   ### Etape 1.2-Réseau public de l'entreprise (DMZ)
   
   ### Etape 1.3-Interconnexion des réseaux de l'entreprise
