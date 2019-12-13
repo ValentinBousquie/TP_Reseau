@@ -294,6 +294,36 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   
   `hostname <nouveau_nom>` ==> permet de changer le nom de la machine
   
+  Nous pouvons ensuite mettre à jour l'ensemble des dépots APT avec `apt-get update` pour pouvoir installer le paquet **BIND9** qui est un service DNS entièrement configurable sur les distributions DEBIAN ou UBUNTU
+  `apt-get install bind9`
+  
+  il faut par la suite créer le fichier db.domain.xx en utilisant le modèle du fichier **db.local** présent dans **/etc/bind/**
+  
+  `cp /etc/bind/db.local /etc/bind/db.domain.xx` puis l'éditer avec nano
+  
+  ```bash
+  ;
+  ; BIND data file for domain.xx
+  ;
+  $TTL    604800
+  @       IN      SOA     <nom-serveur>.domain.xx. root.domain.xx. (
+                                2         ; Serial
+                           604800         ; Refresh
+                            86400         ; Retry
+                          2419200         ; Expire
+                           604800 )       ; Negative Cache TTL
+  ;
+  domain.xx.  IN      NS      <nom-serveur>.domain.xx
+  domain.xx.  IN      A       <ip-serveur-dns>
+
+  <nom-serveur> IN    A  <ip-serveur-dns>      
+
+  www     IN CNAME domain.xx.
+  @       IN      AAAA    ::1
+
+  
+  ```
+  
   ### Etape 7.3-Service global
   
   ### Questions
