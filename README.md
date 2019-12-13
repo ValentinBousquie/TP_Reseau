@@ -13,7 +13,6 @@ Répertoire documentation TP d'installation d'un réseau d'entreprise
   
   `nano /etc/network/interfaces`
   
-  ![no data](https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/46485730_471699810022453_3969204257210499072_n.png?_nc_cat=109&_nc_ohc=-6Rf4mF7MnwAQlIKSApKVyDgu1ho83aWX4wOms5IkG4JERouQOqKYepeg&_nc_ht=scontent-cdt1-1.xx&oh=c34b53705cfa8cf25d6d047875223943&oe=5E88683D)
   
   ### Etape 1.1-Réseau privé de l'entreprise
   
