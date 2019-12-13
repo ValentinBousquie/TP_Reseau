@@ -245,6 +245,12 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   
   ### Etape 7.1-Espace de nommage
   
+  Pour utiliser des noms à la place d'adresse d'IP sur une machine, aller dans le fichier /etc/hosts et ajouter des alias de la forme :
+@ip aliasalias
+
+Exemple :
+183.23.17.2 toto.fr
+  
   ### Etape 7.2-Serveur DNS
   
   ### Etape 7.3-Service global
