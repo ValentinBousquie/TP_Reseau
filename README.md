@@ -209,7 +209,17 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
    On peut supprimer tous les commentaires du fichier, pour rendre l'edition plus facile:
    
    `grep -vE “^#|^$” /etc/squid3/squid.conf.old > /etc/squid3/squid.conf`
-  
+   
+  #### Bloquer des noms de domaines
+   
+   Créer un fichier texte où lister les noms de domaines à bloquer.
+   
+   Puis ajouter les lignes suivantes dans le fichier de configuration :
+   
+    `acl deny_domain url_regex -i "/etc/squid/denydomain.txt"
+    
+     http_access deny deny_domain`
+   
   #### Logs
   
    Les logs du serveur proxy sont dans le fichier "/var/log/squid3/access.log"
