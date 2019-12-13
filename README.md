@@ -68,13 +68,13 @@ Répertoire documentation TP d'installation d'un réseau d'entreprise
   
   #### Question 1.1
   
-  L'intérêt majeur d'avoir une DMZ au sein de son entreprise est de distinguer le réseau privé et l'ensemble des services qui peuvent être consultés par le reste du monde. 
+  L'intérêt majeur d'avoir une DMZ au sein de sont entreprise est de distinguer le réseau privé et l'ensemble des services qui peuvent être consultés par le reste du monde. 
     
   Le réseau privé de notre DMZ est 192.168.2.0/24
   
   Cependant notre serveur doit pouvoir être rejoint à l'adresse publique 202.202.202.2
   
-  pour cela nous devons faire en sorte des masquer tous les paquets venant sur eth2 qui est l'interface directement connectée à la DMZ
+  pour cela nous devons faire en sorte des masquer tous les paquets venant sur eth2 qui est l'interface directement connecté à la DMZ
   
   `iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE`
   
@@ -140,11 +140,52 @@ NAT présente plusieurs avantages. Tout d’abord, le NAT a permis de répondre 
   
   ## Partie IV: Mise en place de la sécurité
   
+  
+  
   ### Etape 4.1-Politique de sécurité
   
   ### Etape 4.2-Mise en place de la politique choisie
   
   ### Questions
+  
+  ```bash
+  #!/bin/sh
+  # Supprime toutes les règles existantes
+  #!/bin/sh
+
+  # Supprime toutes les règles existantes
+  iptables -F
+
+  #*************Politiques***************
+
+  # Bloque l'ensemble des connexions entrantes
+  iptables -P INPUT DROP
+
+  # Bloque l'ensemble des connexions sortantes
+  iptables -P OUTPUT DROP
+
+  # Bloque l'ensemble des connexions forwardées
+  iptables -P FORWARD DROP
+
+  # Connexions déjà établies
+  iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+  iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+  # AUtoriser le loopback
+  iptables -A INPUT -i lo -j ACCEPT
+  iptables -A OUTPUT -o lo -j ACCEPT
+
+  # SSH
+  iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
+  # HTTP
+  iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+
+  # ICMP
+  iptables -A INPUT -p icmp -j DROP
+  iptables -A OUTPUT -p icmp -j ACCEPT
+  ```
+  
   
   #### Question 4.1
   
@@ -245,13 +286,13 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   
   ### Etape 7.1-Espace de nommage
   
-  Pour utiliser des noms à la place d'adresse d'IP sur une machine, aller dans le fichier /etc/hosts et ajouter des alias de la forme :
-@ip aliasalias
-
-Exemple :
-183.23.17.2 toto.fr
-  
   ### Etape 7.2-Serveur DNS
+  
+  Nous devons dans un premier temps connaître le nom de la machine où le service **bind** va être installé
+  
+  `hostname` ==> permet de connaître le nom de la machine
+  
+  `hostname <nouveau_nom>` ==> permet de changer le nom de la machine
   
   ### Etape 7.3-Service global
   
