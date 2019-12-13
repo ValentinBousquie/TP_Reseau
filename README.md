@@ -68,13 +68,13 @@ Répertoire documentation TP d'installation d'un réseau d'entreprise
   
   #### Question 1.1
   
-  L'intérêt majeur d'avoir une DMZ au sein de sont entreprise est de distinguer le réseau privé et l'ensemble des services qui peuvent être consultés par le reste du monde. 
+  L'intérêt majeur d'avoir une DMZ au sein de son entreprise est de distinguer le réseau privé et l'ensemble des services qui peuvent être consultés par le reste du monde. 
     
   Le réseau privé de notre DMZ est 192.168.2.0/24
   
   Cependant notre serveur doit pouvoir être rejoint à l'adresse publique 202.202.202.2
   
-  pour cela nous devons faire en sorte des masquer tous les paquets venant sur eth2 qui est l'interface directement connecté à la DMZ
+  pour cela nous devons faire en sorte des masquer tous les paquets venant sur eth2 qui est l'interface directement connectée à la DMZ
   
   `iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE`
   
