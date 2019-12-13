@@ -187,28 +187,36 @@ puis modifier la section suivante:
   
   ## Partie VI : Mise en place d'un proxy web
   
+   A présent, notre objectif est de configurer un proxy http (on peut également configurer un proxy en ftp).
+Dans un premier temps nous allons mettre en place un proxy cache web, puis un proxy cache transparent.
+
   ### Etape 6.1-Proxy cache web
-  
-  Un proxy ou également appelé serveur mandataire permet de suivre les échanges réseaux entre un client et un serveur, cela va permettre de garantir l'anonymat ou de crypter les données.
-  
-  Pour cela nous allons configurer un proxy http (on peut également configurer un proxy en ftp)
   
   --> Installation d'un proxy
   
-  privoxy
-  https://doc.ubuntu-fr.org/privoxy
+  Squid3
+  `apt-get install squid3`
   
-  à installer sur le routeur 
+  à installer sur le routeur
   
   https://doc.ubuntu-fr.org/proxy_terminal
   
-  
+  Une fois le proxy installé on copie le fichier de configuration par défaut :
+  `mv /etc/squid3/squid.conf /etc/squid3/squid.conf.old`
   
   ### Etape 6.2-Proxy cache transparent
   
   ### Questions
   
   #### Question 6.1
+  
+  Un proxy ou également appelé serveur mandataire permet de suivre les échanges réseaux entre un client et un serveur, cela va permettre de garantir l'anonymat ou de crypter les données.
+  
+  Différentes utilisations d'un proxy-cache :
+  
+- obligatoire et explicite : obligation de passer à travers le proxy mais les utilisateurs doivent configurer leurs applications ou navigateurs.
+
+- obligatoire et implicite : « Proxy transparent » : obligation de passer à travers mais les utilisateurs n’ont pas besoin de configurer leur application ou leur navigateur.
   
   #### Question 6.2
   
