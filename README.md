@@ -210,6 +210,10 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
    
    `grep -vE “^#|^$” /etc/squid3/squid.conf.old > /etc/squid3/squid.conf`
   
+  #### Logs
+  
+   Les logs du serveur proxy sont dans le fichier "/var/log/squid3/access.log"
+  
   ### Etape 6.2-Proxy cache transparent
   
   ### Questions
