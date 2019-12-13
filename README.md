@@ -133,6 +133,10 @@ Ainsi, chaque entité du réseau public d’une entreprise aura accès aux serve
  
  #### Question 3.1
  
+ NAT : Network Address Translation
+
+NAT présente plusieurs avantages. Tout d’abord, le NAT a permis de répondre au problème de pénurie d’adresses sur Internet. Des plages d’adresses ont donc été réservées à une utilisation privée. En effet, tous les réseaux n’ont pas vocation à être accessibles depuis l’extérieur. De plus NAT permet également d’assurer la sécurité d’un réseau interne, en cachant sa topologie invisible au monde extérieur. En général, le NAT est implémenté sur un routeur.
+ 
  #### Question 3.2
   
   ## Partie IV: Mise en place de la sécurité
