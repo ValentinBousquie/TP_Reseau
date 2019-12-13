@@ -192,7 +192,7 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
 
   ### Etape 6.1-Proxy cache web
   
-  --> Installation d'un proxy
+  #### Installation d'un proxy
   
   Installer Squid3: `apt-get install squid3`
   
@@ -200,14 +200,13 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   
   https://doc.ubuntu-fr.org/proxy_terminal
   
-  Configuration
-    Une fois le proxy installé on copie le fichier de configuration par défaut :
-    
-    
+  #### Configuration
+  
+   Une fois le proxy installé on copie le fichier de configuration par défaut :
+      
   `mv /etc/squid3/squid.conf /etc/squid3/squid.conf.old`
   
    On peut supprimer tous les commentaires du fichier, pour rendre l'edition plus facile:
-   
    
    `grep -vE “^#|^$” /etc/squid3/squid.conf.old > /etc/squid3/squid.conf`
   
