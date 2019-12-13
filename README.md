@@ -25,7 +25,7 @@ Répertoire documentation TP d'installation d'un réseau d'entreprise
   
   > configurer une interface avec une adresse statique
   
-  >`iface eth1 inet static`
+  >`iface eth1 inet static` 
   
   >   `address 192.168.1.1` --adresse physique de l'interface eth1 qui sera la passerelle du réseau privé
   
@@ -35,13 +35,77 @@ Répertoire documentation TP d'installation d'un réseau d'entreprise
   
   ### Etape 1.2-Réseau public de l'entreprise (DMZ)
   
+  Pour ce qui est de la zone démilitarisé (DMZ) de notre entreprise nous choisissons un réseau privé différent de celui de la partie privé toujours en /24.
+  
+  Il faut alors ajouter un autre réseau sur une des interfaces du routeur
+  
+    >`iface eth2 inet static` 
+  
+  >   `address 192.168.2.1` --adresse physique de l'interface eth2 qui sera la passerelle du réseau privé
+  
+  >   `netmask 255.255.255.0` --masque de sous réseau de l'interface eth1
+  
+  >   `network 192.168.2.0` --Réseau de eth2
+  
+  
+
+  
   ### Etape 1.3-Interconnexion des réseaux de l'entreprise
+  
+  ![Reseau entreprise](https://image.noelshack.com/fichiers/2019/50/5/1576194122-capture-du-2019-12-13-00-41-50.png)
+  Format: ![Alt Text](url)
+  
+  Il faut pour cela activer le routage sur notre routeur 
+  
+  > Editer `/etc/sysctl.conf`
+  
+  > Décommenter la ligne suivante `net.ipv4.ip_forward=1`
+  
+  > Valider les nouvelles modifications ajoutés au fichier /etc/sysctl.conf `sysctl -p`
+  
+  Nos réseaux sont à présent interconnectés car le routeur remplit automatiquement sa table de routage avec l'ensemble des réseaux pour lequel il est interconnecté.
   
   ### Questions
   
   #### Question 1.1
   
-  Il est intéressant de mettre en place du NAT pour la communication entre la DMZ et le réseau privé car ainsi, les adresses internes du réseau privé sont dissimulées depuis la DMZ ce qui représente un bénéfice en terme de sécurité.
+  L'intérêt majeur d'avoir une DMZ au sein de sont entreprise est de distinguer le réseau privé et l'ensemble des services qui peuvent être consultés par le reste du monde. 
+    
+  Le réseau privé de notre DMZ est 192.168.2.0/24
+  
+  Cependant notre serveur doit pouvoir être rejoint à l'adresse publique 202.202.202.2
+  
+  pour cela nous devons faire en sorte des masquer tous les paquets venant sur eth2 qui est l'interface directement connecté à la DMZ
+  
+  `iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE`
+  
+  - "-t nat" spécifie que l'on souhaite modifier la table nat
+  
+  - "-A" pour "append" permet d'ajouter une nouvelle règle
+  
+  - "POSTROUTING" action après le routage
+  
+  - "-o iface" s'applique sur l'interface output
+  
+  - "-j" jump
+  
+  - "MASQUERADE" le paquet sortant sur l'interface de sortie est masqué par l'adresse de cette même interface
+  
+  Par la suite il faut spécifier que tous les paquets sortant du réseau privé avec l'adresse 202.202.202.2 de notre serveur soit directement relié à l'adresse privée du serveur
+  
+  `iptables -t nat -A PREROUTING -i eth1 -d 202.202.202.2 -j DNAT --to-destination 192.168.2.2`
+  
+  - "PREROUTING" action après le routage
+  
+  - "-i iface" s'applique sur l'interface input 
+  
+  - "-d 202.202.202.2" adresse de destination
+  
+  - "-j DNAT --to-destination 192.168.2.2" redirige vers 192.168.2.2 qui est connu par notre routeur
+  
+  
+  
+  
   
   #### Question 1.2
   
