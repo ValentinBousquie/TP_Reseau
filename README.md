@@ -202,9 +202,13 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   
   Configuration
     Une fois le proxy installé on copie le fichier de configuration par défaut :
+    
+    
   `mv /etc/squid3/squid.conf /etc/squid3/squid.conf.old`
   
    On peut supprimer tous les commentaires du fichier, pour rendre l'edition plus facile:
+   
+   
    `grep -vE “^#|^$” /etc/squid3/squid.conf.old > /etc/squid3/squid.conf`
   
   ### Etape 6.2-Proxy cache transparent
