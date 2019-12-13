@@ -194,13 +194,13 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   
   --> Installation d'un proxy
   
-  > Installer Squid3: `apt-get install squid3`
+  Installer Squid3: `apt-get install squid3`
   
   à installer sur le routeur
   
   https://doc.ubuntu-fr.org/proxy_terminal
   
-  > Configuration
+  Configuration
     Une fois le proxy installé on copie le fichier de configuration par défaut :
   `mv /etc/squid3/squid.conf /etc/squid3/squid.conf.old`
   
