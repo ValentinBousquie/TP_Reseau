@@ -453,6 +453,10 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   
   puis tester avec `nslookup`
   
+  ![resolution nom client](images/resolution-nom-client.png)
+  Format: ![Alt Text](url)
+  
+  
   
 
   ### Etape 7.3-Service global
