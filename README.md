@@ -17,89 +17,7 @@ Ce dépôt git est un répertoire documentation du TP d'installation d'un résea
   
   ## Partie I: Mise en place du réseau sur les VMs 
   
-  `nano /etc/network/interfaces`222
-
->   option routers 192.168.1.1      -- spécifie la passerelle par défaut pour les clients
-
-223
-
-​
-
-224
-
-> }
-
-225
-
-  
-
-226
-
-  ### Questions
-
-227
-
-  
-
-228
-
-  #### Question 5.1
-
-229
-
-  
-
-230
-
-  #### Question 5.2
-
-231
-
-   
-
-232
-
-  #### Question 5.3
-
-233
-
-  
-
-234
-
-  ## Partie VI : Mise en place d'un proxy web
-
-235
-
-  
-
-236
-
-   A présent, notre objectif est de configurer un proxy http (on peut également configurer un proxy en ftp).
-
-237
-
-Dans un premier temps nous allons mettre en place un proxy cache web, puis un proxy cache transparent.
-
-238
-
-​
-
-239
-
-  ### Etape 6.1-Proxy cache web
-
-240
-
-  
-
-241
-
-  #### Installation d'un proxy web
-
-242
-
-  
+  `nano /etc/network/interfaces`
   
   
   ### Etape 1.1-Réseau privé de l'entreprise
@@ -361,7 +279,7 @@ Puis spécifier le port d'écoute en modifiant `/etc/default/isc-dhcp-server`
    
   #### Question 5.3
   
-  Il se peut que sur le réseau il n'y est pas assez d'adresse IP disponible dans la plage d'adresse atribuée au réseau ne permettant alors de pas pouvoir équiper l'ensemble des clients du LAN.2galement si une machine sur le LAN modifie son adresse IP en statique il peut survenir un conflit d'adresse sur le réseau.  
+  Il se peut que sur le réseau il n'y ait pas assez d'adresse IP disponible dans la plage d'adresse atribuée au réseau ne permettant alors de pas pouvoir équiper l'ensemble des clients du LAN.2galement si une machine sur le LAN modifie son adresse IP en statique il peut survenir un conflit d'adresse sur le réseau.  
   
  
   
