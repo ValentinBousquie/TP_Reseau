@@ -238,15 +238,12 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
 
   ### Etape 6.1-Proxy cache web
   
-  #### Installation d'un proxy
+  #### Installation d'un proxy web
   
-  Installer Squid3: `apt-get install squid3`
+  Nous avons choisi d'installer le proxy sur le routeur.
+  Installation de Squid3: `apt-get install squid3`.
   
-  à installer sur le routeur
-  
-  https://doc.ubuntu-fr.org/proxy_terminal
-  
-  #### Configuration
+  #### Configuration du proxy
   
    Une fois le proxy installé on copie le fichier de configuration par défaut :
       
@@ -258,9 +255,9 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
    
   #### Bloquer des noms de domaines
    
-   Créer un fichier texte où lister les noms de domaines à bloquer.
+   Pour bloquer des sites webs, on peut créer un fichier texte contenant la liste des noms de domaines à bloquer.
    
-   Puis ajouter les lignes suivantes dans le fichier de configuration :
+   Puis on ajoute les lignes suivantes dans le fichier de configuration "squid.conf" :
    
     `acl deny_domain url_regex -i "/etc/squid/denydomain.txt"
     
@@ -268,7 +265,12 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
    
   #### Logs
   
-   Les logs du serveur proxy sont dans le fichier "/var/log/squid3/access.log"
+   Les logs du serveur proxy sont stockés dans le fichier "/var/log/squid3/access.log"
+   
+  #### Configuration du navigateur
+  
+   Ensuite nous avons configuré le navigateur côté "client" de la manière suivante :
+   
   
   ### Etape 6.2-Proxy cache transparent
   
