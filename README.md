@@ -1,5 +1,10 @@
-# TP_Reseau
-Répertoire documentation TP d'installation d'un réseau d'entreprise
+# TP Mise en place d'un réseau "d'entreprise"
+
+Ce dépôt git est un répertoire documentation du TP d'installation d'un réseau d'entreprise. Il comprend :
+- L'architecture des réseaux
+- La réponse aux différentes questions
+- Les observations et les tests réalisés
+- Un compte rendu sur les évolutions à apporter au projet
 
 ## Sommaire
 
@@ -8,6 +13,7 @@ Répertoire documentation TP d'installation d'un réseau d'entreprise
   * [Partie III: Communication du réseau privé avec les serveurs web](#partie-iii-communication-du-réseau-privé-avec-les-serveurs-web)
   * [Partie IV: Mise en place de la sécurité](#partie-iv-mise-en-place-de-la-sécurité)
   * [Partie V: Configuration automatique](#partie-v-configuration-automatique)
+  * [Conclusion / Compte rendu](#conclusion/compte-rendu)
   
   ## Partie I: Mise en place du réseau sur les VMs 
   
