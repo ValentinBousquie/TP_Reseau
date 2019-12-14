@@ -342,25 +342,28 @@ Puis spécifier le port d'écoute en modifiant `/etc/default/isc-dhcp-server`
   
   ![test dhcp](images/test-dhcp.png)
   
-  Les informations de résolution de domaine est égelement complété
-  
-  ![test dhcp domaine](images/test-dhcp-domaine.png)
   
   **DHCP** pour **D**ynamic **H**ost **C**onfiguartion **P**rotocol est un protocol permettant d'attribuer une configuration réseau automatique des clients sur le réseau.
   
   sur l'image ci-dessus nous pouvons voir l'ensemble des échanges entre notre client et le serveur 
   
+   **DHCPDISCOVER** Le client localise le serveur DHCP
+   
+   **DHCPREQUEST** Le client envoit une requête au DHCP
+   
+   **DHCPOFFER** Réponse du serveur avec les premiers paramètres
+   
+   **DHCPACK** Réponse du DHCP qui contient l'adresse IP du client,son nom de domaine, sa passerelle,le serveur DNS
   
+   Les informations de résolution de domaine sont également complétés
   
+  ![test dhcp domaine](images/test-dhcp-domaine.png)
    
   #### Question 5.3
   
   Il se peut que sur le réseau il n'y est pas assez d'adresse IP disponible dans la plage d'adresse atribuée au réseau ne permettant alors de pas pouvoir équiper l'ensemble des clients du LAN.2galement si une machine sur le LAN modifie son adresse IP en statique il peut survenir un conflit d'adresse sur le réseau.  
   
-  **DHCPDISCOVER** Le client localise le serveur DHCP
-  **DHCPREQUEST** Le client envoit une requête au DHCP
-  **DHCPOFFER** Réponse du serveur avec les premiers paramètres
-  **DHCPACK** Réponse du DHCP qui contient l'adresse IP du client,son nom de domaine, sa passerelle,le serveur DNS
+ 
   
   
   ## Partie VI : Mise en place d'un proxy web
