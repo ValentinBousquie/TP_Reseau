@@ -332,7 +332,34 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   www     IN CNAME domain.xx.
   @       IN      AAAA    ::1
   
+  
   ```
+  Configuration des zones de notre domaine dans **/etc/bind/named.conf.local**
+  
+  ```bash
+  //
+  // Do any local configuration here
+  //
+
+  // Consider adding the 1918 zones here, if they are not used in your
+  // organization
+  //include "/etc/bind/zones.rfc1918";
+  zone "domain.xx" {
+          type master;
+          file "/etc/bind/db.escudero.gouv";
+          allow-query { any; };
+  };
+  //XXX.XXX.XXX 3 octets de l'adresse IP inversé
+  zone "XXX.XXX.XXX.in-addr.arpa" {
+          type master;
+          file "/etc/bind/db.escudero.gouv.inv";
+  };
+  ```
+  
+  
+
+
+  Configuration des forwarders afin de rediriger vers d'autres serveurs DNS les domaines inconnu de notre serveur DNS dans **/etc/bind/named.conf.options**
   
   ```bash
   options {
@@ -348,7 +375,7 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
         // the all-0's placeholder.
 
          forwarders {
-                192.168.2.2;
+                <ip-serveur-privé>;
                 //autres forwarder
                 8.8.8.8
          };
