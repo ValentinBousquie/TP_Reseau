@@ -17,7 +17,89 @@ Ce dépôt git est un répertoire documentation du TP d'installation d'un résea
   
   ## Partie I: Mise en place du réseau sur les VMs 
   
-  `nano /etc/network/interfaces`
+  `nano /etc/network/interfaces`222
+
+>   option routers 192.168.1.1      -- spécifie la passerelle par défaut pour les clients
+
+223
+
+​
+
+224
+
+> }
+
+225
+
+  
+
+226
+
+  ### Questions
+
+227
+
+  
+
+228
+
+  #### Question 5.1
+
+229
+
+  
+
+230
+
+  #### Question 5.2
+
+231
+
+   
+
+232
+
+  #### Question 5.3
+
+233
+
+  
+
+234
+
+  ## Partie VI : Mise en place d'un proxy web
+
+235
+
+  
+
+236
+
+   A présent, notre objectif est de configurer un proxy http (on peut également configurer un proxy en ftp).
+
+237
+
+Dans un premier temps nous allons mettre en place un proxy cache web, puis un proxy cache transparent.
+
+238
+
+​
+
+239
+
+  ### Etape 6.1-Proxy cache web
+
+240
+
+  
+
+241
+
+  #### Installation d'un proxy web
+
+242
+
+  
   
   
   ### Etape 1.1-Réseau privé de l'entreprise
@@ -187,7 +269,10 @@ NAT présente plusieurs avantages. Tout d’abord, le NAT a permis de répondre 
   # HTTP
   iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 
-  # ICMP
+  # ICMPFirst Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
   iptables -A INPUT -p icmp -j DROP
   iptables -A OUTPUT -p icmp -j ACCEPT
   ```
@@ -201,13 +286,15 @@ NAT présente plusieurs avantages. Tout d’abord, le NAT a permis de répondre 
   
   ### Etape 5.1-DHCP sur réseau privé
   
-  Pour notre serveur DHCP nous avons décidé d'utiliser l'outils isc-dhcp-server fournit sur la distribution de Debian 8.
+  Pour notre serveur DHCP nous avons décidé d'utiliser l'outils isc-dhcp-server fournit sur la distribution de Debian 8. Afin, pour un choix de simplicité nous avons installer le serveur DHCP sur chacun des réseaux de notre entreprise.
   
   Pour cela nous devons installer le paquet après avoir mis à jour l'ensemble des dépots APT
   
    `#apt-get update`
    
    `apt-get install isc-dhcp-server`
+   
+    #### Question 5.1
    
    Par la suite nous devons configurer notre serveur DHCP pour qu'il puisse attribuer dynamiquement les adresses ip à l'ensemble des machines de notre réseau privé
    
@@ -233,12 +320,36 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
    option routers 192.168.1.1;     
 }
 ```
+Informations à renseigner | Informations à véhiculer
+------------ | -------------
+Réseau sur lequel s'applique de DHCP | Passerelle par défaut
+La plage d'adresse à attribuer aux clients | nom de domaine + serveur DNS
 
-  ### Questions
+
+Puis spécifier le port d'écoute en modifiant `/etc/default/isc-dhcp-server`
+
+`INTERFACES="eth1"` ==> Interface d'écoute
   
-  #### Question 5.1
+ 
   
   #### Question 5.2
+  
+  Sur notre client:
+  
+  `dhclient -r <interface>` permet de supprimer la configuration précédente 
+  
+  `dhclient -v <interface>` permet de demander une nouvelle configuration réseau de la part du serveur DHCP
+  
+  On peut voir ci-dessous l'enchainement des informations transmises par notre serveur DHCP
+  
+  ![test dhcp](images/test-dhcp.png)
+  
+  Les informations de résolution de domaine est égelement complété
+  
+  ![test dhcp domaine](images/test-dhcp-domaine.png)
+  
+  
+  
    
   #### Question 5.3
   
