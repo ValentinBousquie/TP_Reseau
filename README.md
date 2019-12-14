@@ -271,6 +271,8 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   
    Ensuite nous avons configuré le navigateur côté "client" de la manière suivante :
    
+   Sur firefox: Menu > Préférences > Général > Paramètres Réseau > Paramètres
+   
    ![Reseau entreprise](images/navigateurProxy.png)
   
   ### Etape 6.2-Proxy cache transparent
