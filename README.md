@@ -293,11 +293,11 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   
 - Il empeche l’accès à des sites webs dangereux pour l’entreprise.
 - Il met en cache des pages webs ou des fichiers afin d’accélérer leurs accès par les utilisateurs.
--->  Par conséquent, cela peut augmenter les performances du réseaux.
+- Par conséquent, cela peut augmenter les performances du réseaux.
 
   #### Question 6.2
   
-   Différentes utilisations d'un proxy-web:
+Différentes utilisations d'un proxy-web:
   
 - obligatoire et explicite : obligation de passer à travers le proxy mais les utilisateurs doivent configurer leurs applications ou navigateurs.
 
