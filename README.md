@@ -215,14 +215,25 @@ NAT présente plusieurs avantages. Tout d’abord, le NAT a permis de répondre 
 
 puis modifier la section suivante:
 
-> subnet 192.168.1.0 netmask 255.255.255.0 { -- réseau sur lequel s'applique le DHCP
+```bash
+# spécifie le nom de domaine aux clients
+option domain-name "escudero.gouv";
 
->   range 192.168.1.4 192.168.1.21; -- définition d'une plage d'adresse à attribuer aux clients
+# spécifie le serveur DNS aux clients
+option domain-name-servers "srv-escu.escudero.gouv";
 
->   option routers 192.168.1.1      -- spécifie la passerelle par défaut pour les clients
+# Serveur DNS
+option domain-name-servers 202.202.202.2;
 
-> }
-  
+# réseau sur lequel s'applique le DHCP
+subnet 192.168.1.0 netmask 255.255.255.0 { 
+   # définition d'une plage d'adresse à attribuer aux clients
+   range 192.168.1.4 192.168.1.21; 
+   # spécifie la passerelle par défaut pour les clients
+   option routers 192.168.1.1;     
+}
+```
+
   ### Questions
   
   #### Question 5.1
