@@ -414,10 +414,21 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
         listen-on-v6 { any; };
    };
 
-
-  
   ```
+  Par la suite sur le serveur DNS il faut enlever tous les serveurs DNS dans le fichier `/etc/resolv.conf` puis grâce à la commande `nslookup`
   
+  ```bash
+  root@srv-escu:/home/escudero# nslookup
+  > escudero.gouv
+  Server:         127.0.0.1
+  Address:        127.0.0.1#53
+
+  Name:   escudero.gouv
+  Address: 202.202.202.2
+  >
+
+  ```
+
   ### Etape 7.3-Service global
   
   ### Questions
