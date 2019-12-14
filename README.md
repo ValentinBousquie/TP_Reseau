@@ -309,6 +309,7 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   `apt-get install bind9`
   
   il faut par la suite créer le fichier db.domain.xx en utilisant le modèle du fichier **db.local** présent dans **/etc/bind/**
+ 
   
   `cp /etc/bind/db.local /etc/bind/db.domain.xx` puis l'éditer avec nano
   
@@ -333,6 +334,28 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   @       IN      AAAA    ::1
   
   
+  Configuration du reverse DNS afin d'associer une adresse IP au nom de domaine
+  
+  ```bash
+  ;
+  ; BIND reverse data file for escudero.gouv
+  ;
+  $TTL    604800
+  @       IN      SOA     <nom-serveur>.domain.xx root.domain.xx. (
+                                1         ; Serial
+                           604800         ; Refresh
+                            86400         ; Retry
+                          2419200         ; Expire
+                           604800 )       ; Negative Cache TTL
+  ;
+  @       IN      NS      <nom-serveur>.
+  2       IN      PTR     <nom-serveur>domain.xx.
+
+
+Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de l'adresse IP publique de notre serveur (ex: 202.202.202.**2**
+
+  ```
+  
   ```
   Configuration des zones de notre domaine dans **/etc/bind/named.conf.local**
   
@@ -346,13 +369,13 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   //include "/etc/bind/zones.rfc1918";
   zone "domain.xx" {
           type master;
-          file "/etc/bind/db.escudero.gouv";
+          file "/etc/bind/db.domain.xx";
           allow-query { any; };
   };
   //XXX.XXX.XXX 3 octets de l'adresse IP inversé
   zone "XXX.XXX.XXX.in-addr.arpa" {
           type master;
-          file "/etc/bind/db.escudero.gouv.inv";
+          file "/etc/bind/db.domain.xx.inv";
   };
   ```
   
