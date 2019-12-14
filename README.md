@@ -269,10 +269,7 @@ NAT présente plusieurs avantages. Tout d’abord, le NAT a permis de répondre 
   # HTTP
   iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 
-  # ICMPFirst Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+  # ICMP
   iptables -A INPUT -p icmp -j DROP
   iptables -A OUTPUT -p icmp -j ACCEPT
   ```
@@ -294,7 +291,8 @@ Content in the first column | Content in the second column
    
    `apt-get install isc-dhcp-server`
    
-    #### Question 5.1
+   
+   #### Question 5.1
    
    Par la suite nous devons configurer notre serveur DHCP pour qu'il puisse attribuer dynamiquement les adresses ip à l'ensemble des machines de notre réseau privé
    
@@ -348,10 +346,22 @@ Puis spécifier le port d'écoute en modifiant `/etc/default/isc-dhcp-server`
   
   ![test dhcp domaine](images/test-dhcp-domaine.png)
   
+  **DHCP** pour **D**ynamic **H**ost **C**onfiguartion **P**rotocol est un protocol permettant d'attribuer une configuration réseau automatique des clients sur le réseau.
+  
+  sur l'image ci-dessus nous pouvons voir l'ensemble des échanges entre notre client et le serveur 
+  
   
   
    
   #### Question 5.3
+  
+  Il se peut que sur le réseau il n'y est pas assez d'adresse IP disponible dans la plage d'adresse atribuée au réseau ne permettant alors de pas pouvoir équiper l'ensemble des clients du LAN.2galement si une machine sur le LAN modifie son adresse IP en statique il peut survenir un conflit d'adresse sur le réseau.  
+  
+  **DHCPDISCOVER** Le client localise le serveur DHCP
+  **DHCPREQUEST** Le client envoit une requête au DHCP
+  **DHCPOFFER** Réponse du serveur avec les premiers paramètres
+  **DHCPACK** Réponse du DHCP qui contient l'adresse IP du client,son nom de domaine, sa passerelle,le serveur DNS
+  
   
   ## Partie VI : Mise en place d'un proxy web
   
