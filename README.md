@@ -415,7 +415,7 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
    };
 
   ```
-  Par la suite sur le serveur DNS il faut enlever tous les serveurs DNS dans le fichier `/etc/resolv.conf` puis grâce à la commande `nslookup`
+  Par la suite sur le serveur DNS il faut enlever tous les serveurs DNS dans le fichier `/etc/resolv.conf` puis grâce à la commande `nslookup` on peut testet sur notre serveur
   
   ```bash
   root@srv-escu:/home/escudero# nslookup
@@ -427,6 +427,20 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   Address: 202.202.202.2
   >
 
+  ```
+  
+  on voit que le domaine escudero.gouv est associé au serveur soit l'adresse de loopback **127.0.0.1**
+  
+  on peut également essayé en ajoutant le nom du serveur **srv-escu**
+  
+  ```bashroot@srv-escu:/home/escudero# nslookup
+  > srv-escu.escudero.gouv
+  Server:         127.0.0.1
+  Address:        127.0.0.1#53
+
+  Name:   srv-escu.escudero.gouv
+  Address: 202.202.202.2
+  >
   ```
 
   ### Etape 7.3-Service global
