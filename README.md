@@ -253,6 +253,11 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
    
    `grep -vE “^#|^$” /etc/squid3/squid.conf.old > /etc/squid3/squid.conf`
    
+   On doit ensuite ajouter la règle de filtrage suivante:
+   Redirection du port 80 vers le port 3128
+   
+   `iptables -A PREROUTING -i eth1 -p tcp --dport 80 -j REDIRECT --to-port 3128`
+   
   #### Bloquer des noms de domaines
    
    Pour bloquer des sites webs, on peut créer un fichier texte contenant la liste des noms de domaines à bloquer.
@@ -282,14 +287,22 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   #### Question 6.1
   
   Un proxy ou également appelé serveur mandataire permet de suivre les échanges réseaux entre un client et un serveur, cela va permettre de garantir l'anonymat ou de crypter les données.
+ 
+  Sécurité et performance justifient l'utilisation d'un proxy web. 
+  En effet, il possède plusieurs avantages pour un réseau d'entreprise :
   
-  Différentes utilisations d'un proxy-cache :
+- Il empeche l’accès à des sites webs dangereux pour l’entreprise.
+- Il met en cache des pages webs ou des fichiers afin d’accélérer leurs accès par les utilisateurs.
+-->  Par conséquent, cela peut augmenter les performances du réseaux.
+
+  #### Question 6.2
+  
+   Différentes utilisations d'un proxy-web:
   
 - obligatoire et explicite : obligation de passer à travers le proxy mais les utilisateurs doivent configurer leurs applications ou navigateurs.
 
 - obligatoire et implicite : « Proxy transparent » : obligation de passer à travers mais les utilisateurs n’ont pas besoin de configurer leur application ou leur navigateur.
-  
-  #### Question 6.2
+
   
   #### Question 6.3
   
@@ -452,13 +465,6 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   `nameserver <ip-serveur-dns>`
   
   puis tester avec `nslookup`
-  
-  ![resolution nom client](images/resolution-nom-client.png)
-  
-  Nous pouvons à présent avoir accès à notre serveur web en utilisant le nom de domaine et l'alias **www**
-  
-  ![test nom domaine](images/test-nom-domaine.png)
-  
   
   
 
