@@ -124,7 +124,7 @@ Ce dépôt git est un répertoire documentation du TP d'installation d'un résea
   
   #### Question 2.1
   On doit d’abord ajouter sur les routeurs de chaque entreprise des interfaces qui permettront de les relier au routeur vers l’extérieur (routeur central).
-Ensuite sur le routeur central, on rajoutera des routes qui relieront tous les routeurs d’entreprises entre eux (via le routeur central).
+Ensuite sur le routeur central, on rajoutera des roues qui relieront tous ltes routeurs d’entreprises entre eux (via le routeur central).
 Ainsi, chaque entité du réseau public d’une entreprise aura accès aux serveurs webs des autres entreprises.
   
   #### Question 2.2
