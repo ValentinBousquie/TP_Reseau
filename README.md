@@ -299,6 +299,8 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   
   ### Etape 7.2-Serveur DNS
   
+  ##### Configuration du serveur DNS
+  
   Nous devons dans un premier temps connaître le nom de la machine où le service **bind** va être installé
   
   `hostname` ==> permet de connaître le nom de la machine
@@ -442,6 +444,16 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   Address: 202.202.202.2
   >
   ```
+  
+  ##### Configuration sur le client
+  
+  Il faut tout d'abord ajouté le serveur DNS dans le fichier `/etc/resolv.conf`
+  
+  `nameserver <ip-serveur-dns>`
+  
+  puis tester avec `nslookup`
+  
+  
 
   ### Etape 7.3-Service global
   
