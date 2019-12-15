@@ -113,6 +113,18 @@ Ce dépôt git est un répertoire documentation du TP d'installation d'un résea
   
   
   #### Question 1.2
+  Les routes définies sont :
+  
+Pour une machine du réseau privé :
+  + @réseau privé via 0.0.0.0
+  + @réseau public via l'interface sur routeur de l'entreprise
+Pour un serveur de la DMZ :
+  + @réseau public via 0.0.0.0
+Du routeur:
+  + @ reseau reste du monde via 0.0.0.0
+  + @ reseau privé via 0.0.0.0
+  + @ reseau public via 0.0.0.0
+  + @ des réseaux publics des autres entreprises via l'interface du routeur central
   
   #### Question 1.3
   
