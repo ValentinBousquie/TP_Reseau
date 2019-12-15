@@ -26,9 +26,9 @@ Ce dépôt git est un répertoire de documentation du TP d'installation d'un ré
   
   Pour commencer il faut définir un réseau sur l'interface de notre routeur relié à notre réseau local
   
-  > éditer le fichier `/etc/network/interfaces`
+  éditer le fichier `/etc/network/interfaces`
   
-  > configurer une interface avec une adresse statique
+  configurer une interface avec une adresse statique
   
   ```bash
   auto eth1
@@ -77,9 +77,6 @@ Ce dépôt git est un répertoire de documentation du TP d'installation d'un ré
     
   
   
-  
-  
-  
   #### Question 1.2
 Enchaînement des messages entre un client et un serveur de la DMZ :
 + N'ayant pas d'interface dans le réseau cible (celui de la DMZ), le client transmet sa requête HTTP à l'interface du routeur de son réseau, celui-ci étant déclaré comme une passerelle vers le réseau de la machine cible.
@@ -92,18 +89,28 @@ Contrairement à un cas classique, aucune opération de masquerading n'est néce
   
   #### Question 1.3
   
+  Pour ajouter des routes permanentes il faut se rendre dans la configuration des interfaces réseau et rajouter sous l'interface:
+  
+  `up route add -net <reseau> netmask <mask> gw <passerelle>`
+  
   Les routes définies sont :
   
 ##### Pour une machine du réseau privé
-  + @réseau privé via 0.0.0.0
-  + @réseau public via l'interface sur routeur de l'entreprise
+
+Destination  | Passerelle    | Masque        | Interface
+------------ | ------------- | ------------- | -------------
+0.0.0.0      | 192.168.1.1   | 0.0.0.0       | eth1
+
+  Le client ayant seuelement une interface relié au client on indique alors grâce à une route par défaut que tous les paquets doivent sortir par eth1 qui est relié à l'interface du routeur correpondant à la passerelle.
 ##### Pour un serveur de la DMZ :
-  + @réseau public via 0.0.0.0
+  Destination  | Passerelle    | Masque        | Interface
+  ------------ | ------------- | ------------- | -------------
+  0.0.0.0      | 192.168.2.1   | 0.0.0.0       | eth1
 ##### Pour le routeur:
-  + @ reseau reste du monde via 0.0.0.0
-  + @ reseau privé via 0.0.0.0
-  + @ reseau public via 0.0.0.0
-  + @ des réseaux publics des autres entreprises via l'interface du routeur central
+  Destination  | Passerelle    | Masque        | Interface
+  ------------ | ------------- | ------------- | -------------
+  192.168.1.0  | 0.0.0.0       | 255.255.255.0 | eth0
+  192.168.2.0  | 0.0.0.0       | 255.255.255.0 | eth1
   
   ## Partie II: Interconnexion avec le "reste du monde"
   
@@ -113,10 +120,32 @@ Contrairement à un cas classique, aucune opération de masquerading n'est néce
   
   #### Question 2.1
   On doit d’abord ajouter sur les routeurs de chaque entreprise des interfaces qui permettront de les relier au routeur vers l’extérieur (routeur central).
-Ensuite sur le routeur central, on rajoutera les routes qui relieront tous les routeurs d’entreprises entre eux (via le routeur central).
+Ensuite sur le routeur central, on rajoutera les routes qui relieront tous les routeurs d’entreprises entre eux
 Ainsi, chaque entité du réseau public d’une entreprise aura accès aux serveurs webs des autres entreprises.
 Ajout des routes sur le serveur central:
-route add -net 
+
+  ##### Pour le routeur de chaque entreprise:
+  Destination  | Passerelle    | Masque        | Interface
+  ------------ | ------------- | ------------- | -------------
+  192.168.1.0  | 0.0.0.0       | 255.255.255.0 | eth0
+  192.168.2.0  | 0.0.0.0       | 255.255.255.0 | eth1
+  21X.21X.21X.0| 21X.21X.21X.1 | 255.255.255.252 | eth2
+  
+  Sur le routeur de chaque entreprise il faut spécifier également une route vers les serveurs des autres entreprises en passant par l'interface reliée au monde extérieure
+  
+  X numéro du binôme
+  Il faut ajouter une route vers le monde extérieur.
+  
+  ##### Pour le routeur de jonction:
+  Destination  | Passerelle    | Masque        | Interface
+  ------------ | ------------- | ------------- | -------------
+  211.211.211.0| 21X.21X.21X.2 | 255.255.255.252 | ethO
+  212.212.212.0| 212.212.212.2 | 255.255.255.252 | eth1
+  213.213.213.0| 213.213.213.2 | 255.255.255.252 | eth2
+  214.214.214.0| 214.214.214.2 | 255.255.255.252 | eth3
+  
+  Il faut également ajouter les routes pour diriger les connexions vers les serveurs de chaque entreprise en spécifiant l'interface relié au routeur en question.
+  
   
   #### Question 2.2
   Ce sont les réseaux privés de chaque entreprise qui ne communiquent pas avec le reste du monde car ayant des adresses privées, ils ne peuvent pas accéder à l’extérieur.
