@@ -550,7 +550,11 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   
   #### Question 7.1
   
-  
+  + Le client demande au serveur DNS de résoudre une URL (ex : machine.extension1.extension2)
+  + Le serveur DNS est également le serveur racine. Il interroge le serveur "extension 2" qui lui donne l'IP du serveur "extension 1"
+  + Le serveur DNS interroge le serveur extension 1 qui le donne l'IP de la machine "machine"
+  + Le serveur DNS interroge la machine "machine"
+  + Le serveur DNS renvoit la réponse vers le client qui enregistre l'ip associé à machine.extension1.extension2 dans son cache
   
   #### Question 7.2
   
