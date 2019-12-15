@@ -194,6 +194,14 @@ Ajout des routes sur le serveur central:
  NAT : Network Address Translation
 
 NAT présente plusieurs avantages. Tout d’abord, le NAT a permis de répondre au problème de pénurie d’adresses sur Internet. Des plages d’adresses ont donc été réservées à une utilisation privée. En effet, tous les réseaux n’ont pas vocation à être accessibles depuis l’extérieur. De plus NAT permet également d’assurer la sécurité d’un réseau interne, en cachant sa topologie invisible au monde extérieur. En général, le NAT est implémenté sur un routeur.
+
+![postrouting masquerade](images/nat1.png)
+
+Dans le cas ci-dessus on indique que les paquets après avoir été routés par la machine seront masqués par l'adresse de l'interface eth0. (MASQUERADE)
+
+![prerouting DNAT](images/nat2.png)
+
+Dans le cas ci-dessus on va spécifier que tout paquet provenant avec une adresse de destination spécifique sera redirigé vers un réseau connu par notre routeur (DNAT)
  
  #### Question 3.2
   
