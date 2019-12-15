@@ -30,13 +30,13 @@ Ce dépôt git est un répertoire de documentation du TP d'installation d'un ré
   
   > configurer une interface avec une adresse statique
   
-  >`iface eth1 inet static` 
-  
-  >   `address 192.168.1.1` --adresse physique de l'interface eth1 qui sera la passerelle du réseau privé
-  
-  >   `netmask 255.255.255.0` --masque de sous réseau de l'interface eth1
-  
-  >   `network 192.168.1.0` --Réseau de eth1
+  ```bash
+  auto eth1
+  iface eth1 inet static
+     address 192.168.1.1 # adresse physique de l'interface eth1 qui sera la passerelle du réseau privé
+     netmask 255.255.255.0 # masque de sous réseau de l'interface eth1
+     network 192.168.1.0 # Réseau de eth1
+  ```
   
   ### Etape 1.2-Réseau public de l'entreprise (DMZ)
   
@@ -44,14 +44,13 @@ Ce dépôt git est un répertoire de documentation du TP d'installation d'un ré
   
   Il faut alors ajouter un autre réseau sur une des interfaces du routeur
   
-    >`iface eth2 inet static` 
-  
-  >   `address 192.168.2.1` --adresse physique de l'interface eth2 qui sera la passerelle du réseau privé
-  
-  >   `netmask 255.255.255.0` --masque de sous réseau de l'interface eth1
-  
-  >   `network 192.168.2.0` --Réseau de eth2
-  
+  ```bash
+  auto eth2
+  iface eth2 inet static
+     address 192.168.2.1 # adresse physique de l'interface eth1 qui sera la passerelle du réseau de la DMZ
+     netmask 255.255.255.0 # masque de sous réseau de l'interface eth2
+     network 192.168.2.0 # Réseau de eth2
+  ```
   
 
   
