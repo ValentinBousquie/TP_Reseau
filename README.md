@@ -1,6 +1,6 @@
 # TP Mise en place d'un réseau "d'entreprise"
 
-Ce dépôt git est un répertoire documentation du TP d'installation d'un réseau d'entreprise. Il comprend :
+Ce dépôt git est un répertoire de documentation du TP d'installation d'un réseau d'entreprise. Il comprend :
 - L'architecture des réseaux
 - La réponse aux différentes questions
 - Les observations et les tests réalisés
@@ -100,7 +100,7 @@ Ce dépôt git est un répertoire documentation du TP d'installation d'un résea
   
   `iptables -t nat -A PREROUTING -i eth1 -d 202.202.202.2 -j DNAT --to-destination 192.168.2.2`
   
-  - "PREROUTING" avant après le routage
+  - "PREROUTING" avant le routage
   
   - "-i iface" s'applique sur l'interface input 
   
