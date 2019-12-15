@@ -40,7 +40,7 @@ Ce dépôt git est un répertoire documentation du TP d'installation d'un résea
   
   ### Etape 1.2-Réseau public de l'entreprise (DMZ)
   
-  Pour ce qui est de la zone démilitarisé (DMZ) de notre entreprise nous choisissons un réseau privé différent de celui de la partie privé toujours en /24.
+  Pour ce qui est de la zone démilitarisée (DMZ) de notre entreprise nous choisissons un réseau privé différent de celui de la partie privée toujours en /24.
   
   Il faut alors ajouter un autre réseau sur une des interfaces du routeur
   
@@ -66,7 +66,7 @@ Ce dépôt git est un répertoire documentation du TP d'installation d'un résea
   
   > Décommenter la ligne suivante `net.ipv4.ip_forward=1`
   
-  > Valider les nouvelles modifications ajoutés au fichier /etc/sysctl.conf `sysctl -p`
+  > Valider les nouvelles modifications ajoutées au fichier /etc/sysctl.conf `sysctl -p`
   
   Nos réseaux sont à présent interconnectés car le routeur remplit automatiquement sa table de routage avec l'ensemble des réseaux pour lequel il est interconnecté.
   
@@ -74,13 +74,13 @@ Ce dépôt git est un répertoire documentation du TP d'installation d'un résea
   
   #### Question 1.1
   
-  L'intérêt majeur d'avoir une DMZ au sein de sont entreprise est de distinguer le réseau privé et l'ensemble des services qui peuvent être consultés par le reste du monde. 
+  L'intérêt majeur d'avoir une DMZ au sein de son entreprise est de distinguer le réseau privé et l'ensemble des services qui peuvent être consultés par le reste du monde. 
     
   Le réseau privé de notre DMZ est 192.168.2.0/24
   
   Cependant notre serveur doit pouvoir être rejoint à l'adresse publique 202.202.202.2
   
-  pour cela nous devons faire en sorte des masquer tous les paquets venant sur eth2 qui est l'interface directement connecté à la DMZ
+  pour cela nous devons faire en sorte de masquer tous les paquets venant sur eth2 qui est l'interface directement connectée à la DMZ
   
   `iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE`
   
@@ -100,7 +100,7 @@ Ce dépôt git est un répertoire documentation du TP d'installation d'un résea
   
   `iptables -t nat -A PREROUTING -i eth1 -d 202.202.202.2 -j DNAT --to-destination 192.168.2.2`
   
-  - "PREROUTING" action après le routage
+  - "PREROUTING" avant après le routage
   
   - "-i iface" s'applique sur l'interface input 
   
