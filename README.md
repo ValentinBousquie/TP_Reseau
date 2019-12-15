@@ -76,37 +76,6 @@ Ce dépôt git est un répertoire de documentation du TP d'installation d'un ré
   
   L'intérêt majeur d'avoir une DMZ au sein de son entreprise est de distinguer le réseau privé et l'ensemble des services qui peuvent être consultés par le reste du monde. 
     
-  Le réseau privé de notre DMZ est 192.168.2.0/24
-  
-  Cependant notre serveur doit pouvoir être rejoint à l'adresse publique 202.202.202.2
-  
-  pour cela nous devons faire en sorte de masquer tous les paquets venant sur eth2 qui est l'interface directement connectée à la DMZ
-  
-  `iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE`
-  
-  - "-t nat" spécifie que l'on souhaite modifier la table nat
-  
-  - "-A" pour "append" permet d'ajouter une nouvelle règle
-  
-  - "POSTROUTING" action après le routage
-  
-  - "-o iface" s'applique sur l'interface output
-  
-  - "-j" jump
-  
-  - "MASQUERADE" le paquet sortant sur l'interface de sortie est masqué par l'adresse de cette même interface
-  
-  Par la suite il faut spécifier que tous les paquets sortant du réseau privé avec l'adresse 202.202.202.2 de notre serveur soit directement relié à l'adresse privée du serveur
-  
-  `iptables -t nat -A PREROUTING -i eth1 -d 202.202.202.2 -j DNAT --to-destination 192.168.2.2`
-  
-  - "PREROUTING" avant le routage
-  
-  - "-i iface" s'applique sur l'interface input 
-  
-  - "-d 202.202.202.2" adresse de destination
-  
-  - "-j DNAT --to-destination 192.168.2.2" redirige vers 192.168.2.2 qui est connu par notre routeur
   
   
   
@@ -156,6 +125,39 @@ route add -net
   ## Partie III: Communication du réseau privé avec les serveurs web
   
  ### Etape 3.1-Réseau privé
+ 
+ Le réseau privé de notre DMZ est 192.168.2.0/24
+  
+  Cependant notre serveur doit pouvoir être rejoint à l'adresse publique 202.202.202.2
+  
+  pour cela nous devons faire en sorte de masquer tous les paquets venant sur eth2 qui est l'interface directement connectée à la DMZ
+  
+  `iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE`
+  
+  - "-t nat" spécifie que l'on souhaite modifier la table nat
+  
+  - "-A" pour "append" permet d'ajouter une nouvelle règle
+  
+  - "POSTROUTING" action après le routage
+  
+  - "-o iface" s'applique sur l'interface output
+  
+  - "-j" jump
+  
+  - "MASQUERADE" le paquet sortant sur l'interface de sortie est masqué par l'adresse de cette même interface
+  
+  Par la suite il faut spécifier que tous les paquets sortant du réseau privé avec l'adresse 202.202.202.2 de notre serveur soit directement relié à l'adresse privée du serveur
+  
+  `iptables -t nat -A PREROUTING -i eth1 -d 202.202.202.2 -j DNAT --to-destination 192.168.2.2`
+  
+  - "PREROUTING" avant le routage
+  
+  - "-i iface" s'applique sur l'interface input 
+  
+  - "-d 202.202.202.2" adresse de destination
+  
+  - "-j DNAT --to-destination 192.168.2.2" redirige vers 192.168.2.2 qui est connu par notre routeur
+  
  
  ### Questions
  
