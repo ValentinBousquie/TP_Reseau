@@ -113,6 +113,17 @@ Ce dépôt git est un répertoire documentation du TP d'installation d'un résea
   
   
   #### Question 1.2
+Enchaînement des messages entre un client et un serveur de la DMZ :
++ N'ayant pas d'interface dans le réseau cible (celui de la DMZ), le client transmet sa requête HTTP à l'interface du routeur de son réseau, celui-ci étant déclaré comme une passerelle vers le réseau de la machine cible.
++ Le routeur transmet la requête directement au serveur, comme il possède une interface dans le réseau de la DMZ.
++ Le serveur reçoit la requête et va chercher une réponse ou la génère à partir d'un script
++ Le serveur renvoit la réponse qui fait le chemin inverse à celui de la requête
++ Le client traite le contenu et le rend accessible à l'utilisateur (exemple : affichage à l'écran)
+
+Contrairement à un cas classique, aucune opération de masquerading n'est nécessaire puisque notre réseau est isolé du reste du monde.
+  
+  #### Question 1.3
+  
   Les routes définies sont :
   
 ##### Pour une machine du réseau privé
@@ -125,8 +136,6 @@ Ce dépôt git est un répertoire documentation du TP d'installation d'un résea
   + @ reseau privé via 0.0.0.0
   + @ reseau public via 0.0.0.0
   + @ des réseaux publics des autres entreprises via l'interface du routeur central
-  
-  #### Question 1.3
   
   ## Partie II: Interconnexion avec le "reste du monde"
   
