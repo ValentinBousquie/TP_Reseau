@@ -436,6 +436,9 @@ Un proxy transparent est plus complexe d'un point de vue réseau si il est insta
   
   ### Etape 7.1-Espace de nommage
   
+  Pour mettre en place un alias sur une machine, ajouter une ligne de la forme :
+  @IP alias
+  
   ### Etape 7.2-Serveur DNS
   
   ##### Configuration du serveur DNS
