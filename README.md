@@ -646,7 +646,7 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   
   La mise en place d'un réseau "d'entreprise" était pour la plupart des membres du groupe un projet inédit. En effet, parmi nous 3 viennent d'un DUT Informatique. Ce fut l'occasion d'acquérir des connaissances sur la mise en place de routeurs, de proxy, de serveur DNS ....
   
-  Sur le plan technique nous n'avons pas réussi à finir la totalité du TP. 
+  Sur le plan technique nous n'avons pas réussi à finir la totalité du TP. Pour le proxy par exemple, nos listes de contrôle d'accès (ACL) étaient mal définies.
   
   Plusieurs améliorations pourraient être apportées aux réseaux mis en place. Par exemple, nous aurions pu utiliser plus de machines pour augmenter la sécurité de notre réseau. Par exemple, nous aurions pu dédier une machine au proxy.
   
