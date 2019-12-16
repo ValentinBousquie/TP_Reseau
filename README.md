@@ -649,3 +649,8 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   Sur le plan technique nous n'avons pas réussi à finir la totalité du TP. 
   
   Plusieurs améliorations pourraient être apportées aux réseaux mis en place. Par exemple, nous aurions pu utiliser plus de machines pour augmenter la sécurité de notre réseau. Par exemple, nous aurions pu dédier une machine au proxy.
+  
+  Pour la partie DNS il aurait été préférable d'utiliser un serveur DNS maitre pour les 4 autres domaines de notre groupe qui seraient alors 4 serveurs DNS esclaves de notre serveur maître.
+  Ainsi si un des réseau d'entreprise souhaite accèder à un autre domaine (donc avec un nom de domaine inconnu au serveur DNS du réseau de l'entreprise), ce dernier intèroge le serveur maître qui lui connaît le serveur associé au nom de domaine demandé.
+  De plus il aurait été interessant d'utiliser un protocole de routage dynamique afin de remplir les tables de routage de tous équipements actifs de niveau 3 de notre réseau afin de ne pas à avoir à le faire manuellement.
+  Nous avons également utilisé le logiciel de simulation GNS3 développé en python afin de simuler notre réseau d'entreprise avec l'ensemble de nos machines virtuelles hébergées sur VirtualBox, ce dernier nous a permis de faciliter nos branchements et d'avoir un meilleur apperçu de notre architecture.
