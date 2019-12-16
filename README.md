@@ -606,10 +606,6 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   + Le serveur DNS interroge la machine "machine"
   + Le serveur DNS renvoit la réponse vers le client qui enregistre l'ip associé à machine.extension1.extension2 dans son cache
   
-  #### Question 7.2
-  
-  Plutôt qu'un système de nommage dépendant des FAI, il est plus intéressant de mettre en place un serveur DNS au sein de l'intranet. Ainsi, on permet au réseau de l'entreprise d'opérer en "milieu fermé", réduisant ainsi les temps d'accès et les risques de sécurité.
-  
   ## Compte rendu
   
   La mise en place d'un réseau "d'entreprise" était pour la plupart des membres du groupe un projet inédit. En effet, parmi nous 3 viennent d'un DUT Informatique. Ce fut l'occasion d'acquérir des connaissances sur la mise en place de routeurs, de proxy, de serveur DNS ....
