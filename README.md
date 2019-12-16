@@ -40,8 +40,6 @@ Ce dépôt git est un répertoire de documentation du TP d'installation d'un ré
   
   ### Etape 1.2-Réseau public de l'entreprise (DMZ)
   
-  
-  
   Pour ce qui est de la zone démilitarisée (DMZ) de notre entreprise nous choisissons un réseau privé différent de celui de la partie privée toujours en /24.
   
   Il faut alors ajouter un autre réseau sur une des interfaces du routeur
@@ -60,11 +58,11 @@ Ce dépôt git est un répertoire de documentation du TP d'installation d'un ré
   
   Il faut pour cela activer le routage sur notre routeur 
   
-  > Editer `/etc/sysctl.conf`
+   Editer `/etc/sysctl.conf`
   
-  > Décommenter la ligne suivante `net.ipv4.ip_forward=1`
+   Décommenter la ligne suivante `net.ipv4.ip_forward=1`
   
-  > Valider les nouvelles modifications ajoutées au fichier /etc/sysctl.conf `sysctl -p`
+   Valider les nouvelles modifications ajoutées au fichier /etc/sysctl.conf `sysctl -p`
   
   Nos réseaux sont à présent interconnectés car le routeur remplit automatiquement sa table de routage avec l'ensemble des réseaux pour lequel il est interconnecté.
   
@@ -78,15 +76,15 @@ Ce dépôt git est un répertoire de documentation du TP d'installation d'un ré
   
   #### Question 1.2
 Enchaînement des messages entre un client et un serveur de la DMZ :
-+ N'ayant pas d'interface dans le réseau cible (celui de la DMZ), le client transmet sa demande de connexion à l'interface du routeur de son réseau, celui-ci étant déclaré comme une passerelle vers le réseau de la machine cible.
-+ Le routeur transmet la demande de connexion directement au serveur, comme il possède une interface dans le réseau de la DMZ.
-+ Le serveur reçoit la demande de connexion et génère à son tour une demande de connexion ainsi qu'un acquitement
-+ Le serveur renvoie la réponse qui fait le chemin inverse à celui de la requête
-+ Le client envoie un acquitement vers le serveur par le chemin qui est désormais connu
-+ Le client envoie sa requête au serveur
++ N'ayant pas d'interface dans le réseau cible (celui de la DMZ), le client transmet sa requête HTTP à l'interface du routeur de son réseau, celui-ci étant déclaré comme une passerelle vers le réseau de la machine cible.
++ Le routeur transmet la requête directement au serveur, comme il possède une interface dans le réseau de la DMZ.
 + Le serveur reçoit la requête et va chercher une réponse ou la génère à partir d'un script
-+ Le serveur envoie sa réponse au client
-+ Le client traite l'information pour la rendre accessible à l'utilisateur (ex : affichage à l'écran)
++ Le serveur renvoit la réponse qui fait le chemin inverse à celui de la requête
++ Le client traite le contenu et le rend accessible à l'utilisateur (exemple : affichage à l'écran)
+
+![postrouting masquerade](images/capture-connexion-http.png)
+![postrouting masquerade](images/chronogramme.png)
+
 Contrairement à un cas classique, aucune opération de masquerading n'est nécessaire puisque notre réseau est isolé du reste du monde.
   
   #### Question 1.3
@@ -141,7 +139,7 @@ Ajout des routes sur le serveur central:
   ##### Pour le routeur de jonction:
   Destination  | Passerelle    | Masque        | Interface
   ------------ | ------------- | ------------- | -------------
-  211.211.211.0| 21X.21X.21X.2 | 255.255.255.252 | ethO
+  211.211.211.0| 211.211.211.2 | 255.255.255.252 | ethO
   212.212.212.0| 212.212.212.2 | 255.255.255.252 | eth1
   213.213.213.0| 213.213.213.2 | 255.255.255.252 | eth2
   214.214.214.0| 214.214.214.2 | 255.255.255.252 | eth3
@@ -241,24 +239,34 @@ Dans le cas ci-dessus on va spécifier que tout paquet provenant avec une adress
   # Connexions déjà établies
   iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
   iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-
-  # AUtoriser le loopback
-  iptables -A INPUT -i lo -j ACCEPT
-  iptables -A OUTPUT -o lo -j ACCEPT
-
-  # SSH
-  iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-
-  # HTTP
-  iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-
-  # ICMP
-  iptables -A INPUT -p icmp -j DROP
-  iptables -A OUTPUT -p icmp -j ACCEPT
   ```
   
   
   #### Question 4.1
+  
+  
+  Pour permettre les communications entrantes sur notre serveur web nous devons autoriser les connexions avec le protocole ICMP en entrée et en sortie.
+  ```bash
+  # ICMP
+  iptables -A INPUT -p icmp -j ACCEPT
+  iptables -A OUTPUT -p icmp -j ACCEPT
+  ```
+  Nous décidons également d'autoriser les connexions ssh en entrée
+  
+  ```bash
+  # SSH
+  iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+  ```
+  
+  Il faut également autoriser les clients à avoir accès aux ressources web de notre serveur 
+  
+  ```bash
+  # HTTP
+  iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+  ```
+  
+  
+  
   
   #### Question 4.2
   
@@ -615,6 +623,6 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   
   La mise en place d'un réseau "d'entreprise" était pour la plupart des membres du groupe un projet inédit. En effet, parmi nous 3 viennent d'un DUT Informatique. Ce fut l'occasion d'acquérir des connaissances sur la mise en place de routeurs, de proxy, de serveur DNS ....
   
-  Sur le plan technique nous n'avons pas réussi à finir la totalité du TP. Nous avons rencontré quelques difficultés avec le proxy web, la liste de contrôle d'accès (ACL) était mal définie. Enfin tous les membres n'ont pas eu le temps de mettre en place une politique de sécurité.
+  Sur le plan technique nous n'avons pas réussi à finir la totalité du TP. 
   
-  Plusieurs améliorations pourraient être apportées aux réseaux mis en place. En effet, nous aurions pu utiliser plus de machines pour augmenter la sécurité de notre réseau. Par exemple, nous aurions pu dédier une machine au proxy.
+  Plusieurs améliorations pourraient être apportées aux réseaux mis en place. Par exemple, nous aurions pu utiliser plus de machines pour augmenter la sécurité de notre réseau. Par exemple, nous aurions pu dédier une machine au proxy.
