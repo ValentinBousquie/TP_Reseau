@@ -56,9 +56,6 @@ Ce dépôt git est un répertoire de documentation du TP d'installation d'un ré
   
   ### Etape 1.3-Interconnexion des réseaux de l'entreprise
   
-  ![Reseau entreprise](https://image.noelshack.com/fichiers/2019/50/5/1576194122-capture-du-2019-12-13-00-41-50.png)
-  Format: ![Alt Text](url)
-  
   Il faut pour cela activer le routage sur notre routeur 
   
   > Editer `/etc/sysctl.conf`
