@@ -413,7 +413,7 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   Sécurité et performance justifient l'utilisation d'un proxy web. 
   En effet, il possède plusieurs avantages pour un réseau d'entreprise :
   
-- Il empeche l’accès à des sites webs dangereux pour l’entreprise.
+- Il empêche l’accès à des sites webs dangereux pour l’entreprise.
 - Il met en cache des pages webs ou des fichiers afin d’accélérer leurs accès par les utilisateurs.
 - Par conséquent, cela peut augmenter les performances du réseaux.
 
