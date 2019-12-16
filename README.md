@@ -101,7 +101,7 @@ Destination  | Passerelle    | Masque        | Interface
 ------------ | ------------- | ------------- | -------------
 0.0.0.0      | 192.168.1.1   | 0.0.0.0       | eth1
 
-  Le client ayant seuelement une interface relié au client on indique alors grâce à une route par défaut que tous les paquets doivent sortir par eth1 qui est relié à l'interface du routeur correpondant à la passerelle.
+  Le client ayant seulement une interface reliée au client on indique alors grâce à une route par défaut que tous les paquets doivent sortir par eth1 qui est reliée à l'interface du routeur correpondant à la passerelle.
 ##### Pour un serveur de la DMZ :
   Destination  | Passerelle    | Masque        | Interface
   ------------ | ------------- | ------------- | -------------
@@ -131,7 +131,7 @@ Ajout des routes sur le serveur central:
   192.168.2.0  | 0.0.0.0       | 255.255.255.0 | eth1
   21X.21X.21X.0| 21X.21X.21X.1 | 255.255.255.252 | eth2
   
-  Sur le routeur de chaque entreprise il faut spécifier également une route vers les serveurs des autres entreprises en passant par l'interface reliée au monde extérieure
+  Sur le routeur de chaque entreprise il faut spécifier également une route vers les serveurs des autres entreprises en passant par l'interface reliée au monde extérieur.
   
   X numéro du binôme
   Il faut ajouter une route vers le monde extérieur.
@@ -144,7 +144,7 @@ Ajout des routes sur le serveur central:
   213.213.213.0| 213.213.213.2 | 255.255.255.252 | eth2
   214.214.214.0| 214.214.214.2 | 255.255.255.252 | eth3
   
-  Il faut également ajouter les routes pour diriger les connexions vers les serveurs de chaque entreprise en spécifiant l'interface relié au routeur en question.
+  Il faut également ajouter les routes pour diriger les connexions vers les serveurs de chaque entreprise en spécifiant l'interface reliée au routeur en question.
   
   
   #### Question 2.2
@@ -174,7 +174,7 @@ Ajout des routes sur le serveur central:
   
   - "MASQUERADE" le paquet sortant sur l'interface de sortie est masqué par l'adresse de cette même interface
   
-  Par la suite il faut spécifier que tous les paquets sortant du réseau privé avec l'adresse 202.202.202.2 de notre serveur soit directement relié à l'adresse privée du serveur
+  Par la suite il faut spécifier que tous les paquets sortant du réseau privé avec l'adresse 202.202.202.2 de notre serveur soient directement reliés à l'adresse privée du serveur.
   
   `iptables -t nat -A PREROUTING -i eth1 -d 202.202.202.2 -j DNAT --to-destination 192.168.2.2`
   
@@ -215,7 +215,7 @@ Dans le cas ci-dessus on va spécifier que tout paquet provenant avec une adress
   
   ### Etape 4.2-Mise en place de la politique choisie
   
-  Pour le pare feu nous éditons un script bash qui va executer des instructions iptables afin de gérer les règles entrantes et sortantes sur notre serveur et sur nos clients.
+  Pour le pare feu nous éditons un script bash qui va exécuter des instructions iptables afin de gérer les règles entrantes et sortantes sur notre serveur et sur nos clients.
    
   
   ```bash
@@ -259,7 +259,7 @@ Dans le cas ci-dessus on va spécifier que tout paquet provenant avec une adress
   iptables -A INPUT -p tcp --dport 22 -j ACCEPT
   ```
   
-  Il faut également autoriser les clients à avoir accès aux ressources web de notre serveur 
+  Il faut également autoriser les clients à avoir accès aux ressources web de notre serveur. 
   
   ```bash
   # HTTP
@@ -297,7 +297,7 @@ Dans le cas ci-dessus on va spécifier que tout paquet provenant avec une adress
   
   ### Etape 5.1-DHCP sur réseau privé
   
-  Pour notre serveur DHCP nous avons décidé d'utiliser l'outils isc-dhcp-server fournit sur la distribution de Debian 8. Afin, pour un choix de simplicité nous avons installer le serveur DHCP sur chacun des réseaux de notre entreprise.
+  Pour notre serveur DHCP nous avons décidé d'utiliser l'outil isc-dhcp-server fourni sur la distribution de Debian 8. Pour un souci de simplicité nous avons installé le serveur DHCP sur chacun des réseaux de notre entreprise.
   
   Pour cela nous devons installer le paquet après avoir mis à jour l'ensemble des dépots APT
   
@@ -375,7 +375,7 @@ Puis spécifier le port d'écoute en modifiant `/etc/default/isc-dhcp-server`
    
   #### Question 5.3
   
-  Il se peut que sur le réseau il n'y ait pas assez d'adresse IP disponible dans la plage d'adresse atribuée au réseau ne permettant alors de pas pouvoir équiper l'ensemble des clients du LAN.2galement si une machine sur le LAN modifie son adresse IP en statique il peut survenir un conflit d'adresse sur le réseau.  
+  Il se peut que sur le réseau il n'y ait pas assez d'adresses IP disponibles dans la plage d'adresse atribuée au réseau ne permettant pas alors de pouvoir équiper l'ensemble des clients du LAN.Egalement si une machine sur le LAN modifie son adresse IP en statique il peut survenir un conflit d'adresse sur le réseau.  
   
  
   
@@ -447,8 +447,8 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   En effet, il possède plusieurs avantages pour un réseau d'entreprise :
   
 - Il empêche l’accès à des sites webs dangereux pour l’entreprise.
-- Il met en cache des pages webs ou des fichiers afin d’accélérer leurs accès par les utilisateurs.
-- Par conséquent, cela peut augmenter les performances du réseaux.
+- Il met en cache des pages webs ou des fichiers afin d’accélérer leur accès par les utilisateurs.
+- Par conséquent, cela peut augmenter les performances du réseau.
 
   #### Question 6.2
   
@@ -457,7 +457,7 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
   - Implicite : « Proxy transparent » : Les utilisateurs n’ont pas besoin de configurer leur application ou leur navigateur.
   
  Il existe plusieurs raisons d’utiliser un proxy web transparent à la place d’un proxy web classique et explicite :
-  - Facilité d’utilisation : les utilisateurs n’ont pas besoin de savoir comment configurer leurs application ou leur navigateur.
+  - Facilité d’utilisation : les utilisateurs n’ont pas besoin de savoir comment configurer leurs applications ou leur navigateur.
   - Les utilisateurs ne connaissent pas l’existence du proxy. Pour une entreprise, cela permet de surveiller l’activité de leurs employés.
 
   
@@ -559,7 +559,7 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   
 
 
-  Configuration des forwarders afin de rediriger vers d'autres serveurs DNS les domaines inconnu de notre serveur DNS dans **/etc/bind/named.conf.options**
+  Configuration des forwarders afin de rediriger vers d'autres serveurs DNS les domaines inconnus de notre serveur DNS dans **/etc/bind/named.conf.options**
   
   ```bash
   options {
@@ -592,7 +592,7 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
    };
 
   ```
-  Par la suite sur le serveur DNS il faut enlever tous les serveurs DNS dans le fichier `/etc/resolv.conf` puis grâce à la commande `nslookup` on peut testet sur notre serveur
+  Par la suite sur le serveur DNS il faut enlever tous les serveurs DNS dans le fichier `/etc/resolv.conf` puis grâce à la commande `nslookup` on peut tester sur notre serveur
   
   ```bash
   root@srv-escu:/home/escudero# nslookup
@@ -608,7 +608,7 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   
   on voit que le domaine escudero.gouv est associé au serveur soit l'adresse de loopback **127.0.0.1**
   
-  on peut également essayé en ajoutant le nom du serveur **srv-escu**
+  on peut également essayer en ajoutant le nom du serveur **srv-escu**
   
   ```bashroot@srv-escu:/home/escudero# nslookup
   > srv-escu.escudero.gouv
@@ -622,7 +622,7 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   
   ##### Configuration sur le client
   
-  Il faut tout d'abord ajouté le serveur DNS dans le fichier `/etc/resolv.conf`
+  Il faut tout d'abord ajouter le serveur DNS dans le fichier `/etc/resolv.conf`
   
   `nameserver <ip-serveur-dns>`
   
@@ -640,17 +640,17 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   + Le serveur DNS est également le serveur racine. Il interroge le serveur "extension 2" qui lui donne l'IP du serveur "extension 1"
   + Le serveur DNS interroge le serveur extension 1 qui le donne l'IP de la machine "machine"
   + Le serveur DNS interroge la machine "machine"
-  + Le serveur DNS renvoit la réponse vers le client qui enregistre l'ip associé à machine.extension1.extension2 dans son cache
+  + Le serveur DNS renvoie la réponse vers le client qui enregistre l'ip associé à machine.extension1.extension2 dans son cache
   
   ## Compte rendu
   
-  La mise en place d'un réseau "d'entreprise" était pour la plupart des membres du groupe un projet inédit. En effet, parmi nous 3 viennent d'un DUT Informatique. Ce fut l'occasion d'acquérir des connaissances sur la mise en place de routeurs, de proxy, de serveur DNS ....
+  La mise en place d'un réseau "d'entreprise" était pour la plupart des membres du groupe un projet inédit. En effet parmi nous, 3 viennent d'un DUT Informatique. Ce fut l'occasion d'acquérir des connaissances sur la mise en place de routeurs, de proxy, de serveur DNS ....
   
   Sur le plan technique nous n'avons pas réussi à finir la totalité du TP. Pour le proxy par exemple, nos listes de contrôle d'accès (ACL) étaient mal définies.
   
   Plusieurs améliorations pourraient être apportées aux réseaux mis en place. Par exemple, nous aurions pu utiliser plus de machines pour augmenter la sécurité de notre réseau. Par exemple, nous aurions pu dédier une machine au proxy.
   
   Pour la partie DNS il aurait été préférable d'utiliser un serveur DNS maitre pour les 4 autres domaines de notre groupe qui seraient alors 4 serveurs DNS esclaves de notre serveur maître.
-  Ainsi si un des réseau d'entreprise souhaite accèder à un autre domaine (donc avec un nom de domaine inconnu au serveur DNS du réseau de l'entreprise), ce dernier intèroge le serveur maître qui lui connaît le serveur associé au nom de domaine demandé.
-  De plus il aurait été interessant d'utiliser un protocole de routage dynamique afin de remplir les tables de routage de tous équipements actifs de niveau 3 de notre réseau afin de ne pas à avoir à le faire manuellement.
-  Nous avons également utilisé le logiciel de simulation GNS3 développé en python afin de simuler notre réseau d'entreprise avec l'ensemble de nos machines virtuelles hébergées sur VirtualBox, ce dernier nous a permis de faciliter nos branchements et d'avoir un meilleur apperçu de notre architecture.
+  Ainsi si un des réseau d'entreprise souhaite accéder à un autre domaine (donc avec un nom de domaine inconnu au serveur DNS du réseau de l'entreprise), ce dernier interroge le serveur maître qui lui, connaît le serveur associé au nom de domaine demandé.
+  De plus il aurait été interessant d'utiliser un protocole de routage dynamique afin de remplir les tables de routage de tous les équipements actifs de niveau 3 de notre réseau afin de ne pas à avoir à le faire manuellement.
+  Nous avons également utilisé le logiciel de simulation GNS3 développé en python afin de simuler notre réseau d'entreprise avec l'ensemble de nos machines virtuelles hébergées sur VirtualBox, ce dernier nous a permis de faciliter nos branchements et d'avoir un meilleur aperçu de notre architecture.
