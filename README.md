@@ -40,6 +40,8 @@ Ce dépôt git est un répertoire de documentation du TP d'installation d'un ré
   
   ### Etape 1.2-Réseau public de l'entreprise (DMZ)
   
+  
+  
   Pour ce qui est de la zone démilitarisée (DMZ) de notre entreprise nous choisissons un réseau privé différent de celui de la partie privée toujours en /24.
   
   Il faut alors ajouter un autre réseau sur une des interfaces du routeur
@@ -76,12 +78,15 @@ Ce dépôt git est un répertoire de documentation du TP d'installation d'un ré
   
   #### Question 1.2
 Enchaînement des messages entre un client et un serveur de la DMZ :
-+ N'ayant pas d'interface dans le réseau cible (celui de la DMZ), le client transmet sa requête HTTP à l'interface du routeur de son réseau, celui-ci étant déclaré comme une passerelle vers le réseau de la machine cible.
-+ Le routeur transmet la requête directement au serveur, comme il possède une interface dans le réseau de la DMZ.
++ N'ayant pas d'interface dans le réseau cible (celui de la DMZ), le client transmet sa demande de connexion à l'interface du routeur de son réseau, celui-ci étant déclaré comme une passerelle vers le réseau de la machine cible.
++ Le routeur transmet la demande de connexion directement au serveur, comme il possède une interface dans le réseau de la DMZ.
++ Le serveur reçoit la demande de connexion et génère à son tour une demande de connexion ainsi qu'un acquitement
++ Le serveur renvoie la réponse qui fait le chemin inverse à celui de la requête
++ Le client envoie un acquitement vers le serveur par le chemin qui est désormais connu
++ Le client envoie sa requête au serveur
 + Le serveur reçoit la requête et va chercher une réponse ou la génère à partir d'un script
-+ Le serveur renvoit la réponse qui fait le chemin inverse à celui de la requête
-+ Le client traite le contenu et le rend accessible à l'utilisateur (exemple : affichage à l'écran)
-
++ Le serveur envoie sa réponse au client
++ Le client traite l'information pour la rendre accessible à l'utilisateur (ex : affichage à l'écran)
 Contrairement à un cas classique, aucune opération de masquerading n'est nécessaire puisque notre réseau est isolé du reste du monde.
   
   #### Question 1.3
