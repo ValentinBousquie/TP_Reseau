@@ -204,6 +204,8 @@ Dans le cas ci-dessus on indique que les paquets après avoir été routés par 
 Dans le cas ci-dessus on va spécifier que tout paquet provenant avec une adresse de destination spécifique sera redirigé vers un réseau connu par notre routeur (DNAT)
  
  #### Question 3.2
+ 
+ A présent les clients des réseaux privés de chaque entreprise peuvent accéder aux DMZ des autres réseaux d'entreprise. Cependant dans notre configuration actuelle, les clients n'ont pas accès à Internet.
   
   ## Partie IV: Mise en place de la sécurité
   
