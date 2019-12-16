@@ -215,7 +215,8 @@ Dans le cas ci-dessus on va spécifier que tout paquet provenant avec une adress
   
   ### Etape 4.2-Mise en place de la politique choisie
   
- 
+  Pour le pare feu nous éditons un script bash qui va executer des instructions iptables afin de gérer les règles entrantes et sortantes sur notre serveur et sur nos clients.
+   
   
   ```bash
   #!/bin/sh
@@ -288,9 +289,9 @@ Dans le cas ci-dessus on va spécifier que tout paquet provenant avec une adress
   ```
   
   
-  
-  
   #### Question 4.2
+  
+  Lors de l'établissement d'une connexion (SYN) la machine LINUX considère ce paquet comme **NEW**, dès qu'il s'agit d'un paquet en réponse la machine l'interprète comme **ESTABLISHED**. L'établissement d'une connexion TCP nous sera donc particulièrement intéressante pour rédiger nos règles de filtrage.
   
   ## Partie V: Configuration automatique
   
