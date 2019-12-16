@@ -609,3 +609,5 @@ Le **2** dans la zone pointée (PTR) correspond à l'octet de la partie hôte de
   #### Question 7.2
   
   Plutôt qu'un système de nommage dépendant des FAI, il est plus intéressant de mettre en place un serveur DNS au sein de l'intranet. Ainsi, on permet au réseau de l'entreprise d'opérer en "milieu fermé", réduisant ainsi les temps d'accès et les risques de sécurité.
+  
+  ## Compte rendu
