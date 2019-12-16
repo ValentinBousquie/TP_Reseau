@@ -378,9 +378,9 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
    
    Puis on ajoute les lignes suivantes dans le fichier de configuration "squid.conf" :
    
-    `acl deny_domain url_regex -i "/etc/squid/denydomain.txt"
+  `acl deny_domain url_regex -i "/etc/squid/denydomain.txt"
     
-     http_access deny deny_domain`
+   http_access deny deny_domain`
    
   #### Logs
   
@@ -395,6 +395,12 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
    ![Reseau entreprise](images/navigateurProxy.png)
   
   ### Etape 6.2-Proxy cache transparent
+  
+  Pour mettre en place un proxy transparent on doit modifier une ligne dans le fichier squid.conf de la manière suivante: 
+  `http_port: 3128 transparent`. 
+  
+  Nous avons installé le proxy Squid sur le routeur de notre réseau. Il est donc plus facile de le mettre en place que si nous avions dédié une machine pour le proxy.
+  
   
   ### Questions
   
@@ -411,14 +417,18 @@ Dans un premier temps nous allons mettre en place un proxy cache web, puis un pr
 
   #### Question 6.2
   
-Différentes utilisations d'un proxy-web:
+ On peut avoir différentes utilisations d'un proxy-web:
+  - Explicite : Les utilisateurs doivent configurer leurs applications ou navigateurs.
+  - Implicite : « Proxy transparent » : Les utilisateurs n’ont pas besoin de configurer leur application ou leur navigateur.
   
-- obligatoire et explicite : obligation de passer à travers le proxy mais les utilisateurs doivent configurer leurs applications ou navigateurs.
-
-- obligatoire et implicite : « Proxy transparent » : obligation de passer à travers mais les utilisateurs n’ont pas besoin de configurer leur application ou leur navigateur.
+ Il existe plusieurs raisons d’utiliser un proxy web transparent à la place d’un proxy web classique et explicite :
+  - Facilité d’utilisation : les utilisateurs n’ont pas besoin de savoir comment configurer leurs application ou leur navigateur.
+  - Les utilisateurs ne connaissent pas l’existence du proxy. Pour une entreprise, cela permet de surveiller l’activité de leurs employés.
 
   
   #### Question 6.3
+ 
+Un proxy transparent est plus complexe d'un point de vue réseau si il est installé sur une machine dédiée. Cette méthode est plus sécurisée que celle où on installe le proxy sur le routeur. Cependant cela nous oblige à mettre plus de règles de filtrage en place.
   
   ## Partie VII : DNS
   
